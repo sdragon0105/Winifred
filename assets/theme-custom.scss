@@ -3,6 +3,29 @@
   /* inline-size: max content !important; */
 }
 
+.image-size{
+  width: 90%;
+  height: 350px;
+  fill:#999;
+  background-color:#e1e1e1;
+  display:block;
+  padding:30px 0;
+}
+.div--position {
+  position: relative;
+}
+
+.grid__floral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.enlarge-text--style p {
+    margin: 0;
+}
+
+
+
 .hero-image{
   width: 99vw;
 }
