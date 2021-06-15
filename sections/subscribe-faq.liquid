@@ -1,0 +1,185 @@
+<div class="faq-content-style">
+  {%- if section.settings.title or section.settings.top_subheading -%}
+    <div class="page-width page-content{% if section.blocks.size > 0 %} page-content--with-blocks{% endif %}">
+  
+      <div class="grid">
+        <div class="grid__item medium-up--three-quarters medium-up--push-one-eighth">
+          
+          <header class="section-header">
+            <h3 class="section-header__subtitle">{{ section.settings.top_subheading }}</h3>
+            <h1 class="section-header__title title-uppercase">
+              {{ section.settings.title }}
+            </h1>
+          </header>       
+  
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+  
+  {%- if section.blocks.size > 0 -%}
+    <div class="page-width page-content page-style">
+      <div class="grid">
+        <div class="grid__item medium-up--three-quarters medium-up--push-one-eighth">
+  
+          <div class="page-blocks page-blocks--flush" itemscope itemtype="https://schema.org/FAQPage">
+  
+            {% assign block_cnt = section.blocks.size  %} 
+            {% assign mod = block_cnt | modulo: 2 %}
+  
+            {% if mod == 0 %}
+              {% assign block_limit = block_cnt | divided_by: 2 %}
+            {% else %}
+              {% assign block_limit = block_cnt | divided_by: 2 | plus: 1 %}
+            {% endif %}
+  
+            <div class="faq-content">
+              <div class="faq-left-style">
+                {%- for block in section.blocks limit: block_limit -%}          
+                  <div {{ block.shopify_attributes }}>                  
+                        {%- render 'page-block-faq', block: block -%}                
+                  </div>                
+                {%- endfor -%}
+              </div>
+  
+              <div class="faq-right-style">
+                {%- for block in section.blocks limit: block_limit offset: continue -%}          
+                  <div {{ block.shopify_attributes }}>                  
+                        {%- render 'page-block-faq', block: block -%}                
+                  </div>
+                  
+                {%- endfor -%}
+              </div>
+            </div>
+            {%comment%}
+            {%- for block in section.blocks -%}
+            
+              <div {{ block.shopify_attributes }} class={{ blockClass }}>
+                {%- case block.type -%}
+                  {%- when 'rich-text'-%}
+                    {%- render 'page-block-rich-text', section_class: 'index-section--faq', block: block -%}
+  
+                  {%- when 'question'-%}
+                    {%- render 'page-block-faq', block: block -%}
+  
+                {%- endcase -%}
+              </div>
+              
+            {%- endfor -%}
+            {%endcomment%}
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+  {
+    "name": "Faq page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "top_subheading",
+        "label": "Subheading",
+        "default": "Add a Sub_Title"
+      },     
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Add a Title"
+      }
+    ],
+    "default": {
+      "blocks": [
+        {
+          "type": "rich-text",
+          "settings": {
+            "title": "Shipping policy"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "title": "Where do you ship to?"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "title": "How long will my order take?"
+          }
+        },
+        {
+          "type": "rich-text",
+          "settings": {
+            "title": "Returns and exchanges"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "title": "How do I ship my order back to you?"
+          }
+        }
+      ]
+    },
+    "blocks": [
+      {
+        "type": "rich-text",
+        "name": "Rich text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Rich text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this section for any descriptive text you need to fill out your pages or to add introductory headings between other blocks.</p>"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "question",
+        "name": "Question",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Question",
+            "default": "Frequently asked question"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
