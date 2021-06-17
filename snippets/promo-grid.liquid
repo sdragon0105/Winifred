@@ -217,12 +217,13 @@
     {%- endfor -%}
   </div>
 
-  <div class="feature-text__item">
-    {%- if section.settings.textarea != blank -%}
-        <div class="rte--block" style="width: 70%;">
-          {{ section.settings.textarea | newline_to_br }}
-        </div>
-      {%- endif -%}
+  {% if section.settings.textarea != blank %}
+    <div class="feature-text__item">
+
+      <div class="rte--block" style="width: 70%;">
+        {{ section.settings.textarea | newline_to_br }}
+      </div>
+
       {%- if section.settings.cta_text1 != blank -%}
         <a href="{{ section.settings.cta_link1 }}" class="btn{% unless accent_exists %}{% unless section.settings.boxed %} btn--inverse{% endunless %}{% endunless %}">
           {{ section.settings.cta_text1 }}
@@ -233,6 +234,7 @@
           {{ section.settings.cta_text2 }}
         </a>
       {%- endif -%}
-  </div>
+    </div>
+  {% endif %}
 
 </div>
