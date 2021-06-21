@@ -23,52 +23,55 @@
       {%- if section.settings.title != blank -%}
         <h2>{{ section.settings.title }}</h2>
       {%- endif -%}
-
-      {%- if section.settings.text != blank -%}
-        <div class="grid__item">
-          {%- if section.settings.enlarge_text -%}<div class="enlarge-text enlarge-text--style ">{%- endif -%}
-            {{ section.settings.text }}
-          {%- if section.settings.enlarge_text -%}</div>{%- endif -%}
-        </div>
-      {%- endif -%}
     </div>
   </div>
 
 
-  <div class="page-width">
+  <div>
     {% for block in section.blocks %}
       <div class="feature-row__item">
-        {% if block.settings.image != blank %}
-          {% capture img_id %}FeatureRowImage-{{ section.id }}{% endcapture %}
-          {% capture wrapper_id %}FeatureRowImageWrapper-{{ section.id }}{% endcapture %}
-          {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-          {% include 'image-style', image: block.settings.image, height: 701, wrapper_id: wrapper_id, img_id: img_id %}
-          <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js feature-row__image-wrapper--align" style="z-index: 1;">
-            <img id="{{ img_id }}"
-                class="feature-row__image lazyload"
-                data-src="{{ img_url }}"
-                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
-                data-sizes="auto"
-                alt="{{ block.settings.image.alt }}">
-          </div>
+        {% if block.type == 'text' %}
+          {% if block.settings.image != blank %}
+            {% capture img_id %}FeatureRowImage-{{ section.id }}{% endcapture %}
+            {% capture wrapper_id %}FeatureRowImageWrapper-{{ section.id }}{% endcapture %}
+            {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            {% include 'image-style', image: block.settings.image, height: 701, wrapper_id: wrapper_id, img_id: img_id %}
+            <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js feature-row__image-wrapper--align" style="z-index: 1;">
+              <img id="{{ img_id }}"
+                  class="feature-row__image lazyload"
+                  data-src="{{ img_url }}"
+                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ block.settings.image.alt }}">
+            </div>
 
-          <noscript>
-            {{ block.settings.image | img_url: '1624x701' | img_tag: block.settings.image.alt, 'feature-row__image' }}
-          </noscript>
+            <noscript>
+              {{ block.settings.image | img_url: '1624x701' | img_tag: block.settings.image.alt, 'feature-row__image' }}
+            </noscript>
 
-        {% else %}
-          {{ 'image' | placeholder_svg_tag: 'image-size'}}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'image-size'}}
+          {% endif %}
         {% endif %}
 
-        {% if block.settings.text != blank %}
-          <div class="grid__item--align">
-            {{ block.settings.text }}
-          </div>
-        {% endif %}
       </div>
     {% endfor %}
   </div>
+
+  {% for block in section.blocks %}
+    {% if block.type =='custom' %}
+      <div class="individual-text">
+        {%- if block.settings.text != blank -%}
+          <div class="grid__item individual-text--align">
+            {%- if section.settings.enlarge_text -%}<div class="enlarge-text enlarge-text--style ">{%- endif -%}
+              {{ block.settings.text }}
+            {%- if section.settings.enlarge_text -%}</div>{%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {% endif %}
+  {% endfor %}
 
   {% if section.settings.background_mark == true %}
     <div class="background-image"></div>
@@ -79,19 +82,13 @@
 
 {% schema %}
   {
-    "name": "Rich text",
+    "name": "Individual text",
     "class": "index-section",
     "settings": [
       {
         "type": "text",
         "id": "title",
         "label": "Heading"
-      },
-      {
-        "type": "richtext",
-        "id": "text",
-        "label": "Text",
-        "default": "<p>A sentence or two introducing your brand, what you sell, and what makes your brand compelling to customers.</p>"
       },
       {
         "type": "select",
@@ -133,24 +130,27 @@
         "default": false
       }
     ],
-    "presets": [{
-      "name": "Rich text",
-      "category": "Text"
-    }],
     "blocks":[
       {
         "type": "text",
-        "name": "Content",
+        "name": "Image Content",
         "settings":[
           {
             "type": "image_picker",
             "id": "image",
             "label": "Image"
-          },
+          }
+        ]
+      },
+      {
+        "type": "custom",
+        "name": "Text Content",
+        "settings":[
           {
             "type": "richtext",
             "id": "text",
-            "label": "Text"
+            "label": "Text",
+            "default": "<p>A sentence or two introducing your brand, what you sell, and what makes your brand compelling to customers.</p>"
           }
         ]
       }

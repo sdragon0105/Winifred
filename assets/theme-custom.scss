@@ -72,3 +72,16 @@
   justify-content: center;
   margin-top: 30px;
 }
+.promo-grid__content--height {
+  height: 90%;
+}
+.promo-gird__text--align {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.individual-text--align {
+  padding: 20px 0;
+}
