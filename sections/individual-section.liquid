@@ -63,7 +63,7 @@
     {% if block.type =='custom' %}
       <div class="individual-text">
         {%- if block.settings.text != blank -%}
-          <div class="grid__item individual-text--align">
+          <div class="individual-text--align">
             {%- if section.settings.enlarge_text -%}<div class="enlarge-text enlarge-text--style ">{%- endif -%}
               {{ block.settings.text }}
             {%- if section.settings.enlarge_text -%}</div>{%- endif -%}
