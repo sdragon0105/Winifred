@@ -88,7 +88,7 @@
   margin: auto;
 }
 .wafer-paper-grid__content {
-  padding: 9em !important;
+  padding: 6em !important;
   height: 90%;
   width: 50%;
 }
@@ -109,4 +109,28 @@
   height: 348px;
   background-color: #FAF4F1;
   color: black;
+}
+.wafer-paper-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 40px;
+
+}
+.wafer-paper-row__image {
+  width: 60%;
+  height: 100%;
+  z-index: 1;
+}
+.wafer-paper-row__item {
+  width: 40%;
+  height: 100%;
+  text-align: center;
+  z-index: 1;
+}
+.page-width--position {
+  position: relative;
+  overflow: hidden;
+  margin-top: -60px;
 }
