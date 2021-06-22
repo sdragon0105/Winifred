@@ -35,7 +35,7 @@
             {% capture img_id %}FeatureRowImage-{{ section.id }}{% endcapture %}
             {% capture wrapper_id %}FeatureRowImageWrapper-{{ section.id }}{% endcapture %}
             {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-            {% include 'image-style', image: block.settings.image, height: 701, wrapper_id: wrapper_id, img_id: img_id %}
+            {% include 'image-style', image: block.settings.image, height: 404, wrapper_id: wrapper_id, img_id: img_id %}
             <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js feature-row__image-wrapper--align" style="z-index: 1;">
               <img id="{{ img_id }}"
                   class="feature-row__image lazyload"
@@ -47,7 +47,7 @@
             </div>
 
             <noscript>
-              {{ block.settings.image | img_url: '1624x701' | img_tag: block.settings.image.alt, 'feature-row__image' }}
+              {{ block.settings.image | img_url: '1920x404' | img_tag: block.settings.image.alt, 'feature-row__image' }}
             </noscript>
 
           {% else %}

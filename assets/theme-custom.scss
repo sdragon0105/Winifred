@@ -87,3 +87,26 @@
   width: 70%;
   margin: auto;
 }
+.wafer-paper-grid__content {
+  padding: 9em !important;
+  height: 90%;
+  width: 50%;
+}
+.wafer-paper-gird__text--align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 100%;
+}
+.wafer-paper-text__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 348px;
+  background-color: #FAF4F1;
+  color: black;
+}
