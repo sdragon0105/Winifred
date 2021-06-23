@@ -1,6 +1,7 @@
 {%- liquid
   assign main_menu = linklists[section.settings.main_menu_link_list]
   assign toolbar_menu = linklists[section.settings.toolbar_menu]
+  assign observe_menu = linklists[section.settings.observe_menu_link_list]
 
   assign logo_alignment = 'left'
   if section.settings.main_menu_alignment == 'center-left' or section.settings.main_menu_alignment == 'center-split' or section.settings.main_menu_alignment == 'center' or section.settings.main_menu_alignment == 'center-drawer'
@@ -187,7 +188,10 @@
             {%- endif -%}
 
             <div class="header-item header-item--icons">
+              {%- render 'header-desktop-nav', main_menu: observe_menu, dropdown_alignment: dropdown_alignment -%}
+              {% comment %}
               {%- render 'header-icons', section: section -%}
+              {% endcomment %}
             </div>
           </div>
 
@@ -247,6 +251,11 @@
         "id": "main_menu_link_list",
         "label": "Navigation",
         "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "observe_menu_link_list",
+        "label": "Navigation"
       },
       {
         "type": "checkbox",
