@@ -124,18 +124,18 @@
           }
         }
       </style>
-      
+
       <div class="footer-additional-payment-methods clearfix">
         <div>
           <img
           src="https://cdn.shopify.com/s/images/badges/shopify-secure-badge-white.svg" alt="Shopify secure badge" />
         </div>
         <div>
-          <!-- (c) 2005, 2020. Authorize.Net is a registered trademark of CyberSource Corporation --> 
+          <!-- (c) 2005, 2020. Authorize.Net is a registered trademark of CyberSource Corporation -->
           <div class="AuthorizeNetSeal">
             <script type="text/javascript" language="javascript">var ANS_customer_id="eae5f022-92c1-4d9e-ad21-7262f6a4365f";</script>
             <script type="text/javascript" language="javascript" src="//verify.authorize.net:443/anetseal/seal.js" ></script>
-          </div>    
+          </div>
         </div>
         <div>
           <img src={{ 'Sezzle_Logo_FullColor-small.png' | asset_img_url: '150x' }} alt="Sezzle Logo">
@@ -144,12 +144,12 @@
       {% endcomment %}
 
     {%- endif -%}
-    
+
     <p class="footer-social-icons">
       <a target="_blank" rel="noopener" href="https://facebook.com/vitalbodytherapeutics" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
         <svg width="35" height="35" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3842 0.582031C5.99231 0.582031 0 6.7046 0 14.2572C0 21.8098 5.99231 27.9323 13.3842 27.9323C20.7761 27.9323 26.7684 21.8098 26.7684 14.2572C26.7684 6.7046 20.7761 0.582031 13.3842 0.582031ZM14.7793 14.858V22.298H11.7664V14.8582H10.2612V12.2944H11.7664V10.755C11.7664 8.66344 12.6164 7.41969 15.0311 7.41969H17.0415V9.98385H15.7849C14.8449 9.98385 14.7827 10.3422 14.7827 11.0108L14.7793 12.2941H17.0557L16.7893 14.858H14.7793Z" fill="#3b5998"/>
-        </svg>  
+        </svg>
         <span class="icon__fallback-text">Facebook</span>
       </a>
       <a target="_blank" rel="noopener" href="https://instagram.com/vitalbodytherapeutics" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}" style="margin-right:0;">
@@ -171,6 +171,10 @@
       </p>
     {%- endif -%}
     <!-- <p class="footer__small-text">{{ powered_by_link }}</p> -->
+    <div class="footer-mark">
+      <img src="{{ 'menu-icon.png' | asset_url }}">
+      <p style="margin: 0; padding-left: 10px;">   © Winifred Kriste Cake</p>
+    </div>
 
   </div>
 </footer>
