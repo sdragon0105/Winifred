@@ -210,8 +210,21 @@
     {%- endfor -%}
   </div>
 
+{%- style -%}
+  .mentorship-contents__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: {{ section.settings.text-contents_height }}px;
+    background-color: {{ section.settings.text-contents_background-color }};
+    color: black;
+  }
+{%- endstyle -%}
+
 {% if section.settings.textarea != blank %}
-    <div class="wafer-paper-text__item">
+    <div class="mentorship-contents__item">
 
       {%- if section.settings.heading != blank -%}
         <div class="rte--block rte--strong" style="font-size: 2em;">
