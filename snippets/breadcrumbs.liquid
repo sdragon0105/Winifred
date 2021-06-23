@@ -1,10 +1,10 @@
 {%- if settings.show_breadcrumbs -%}
-
+<div class="page-width">
 {%- unless template.name == 'index' or template.name == 'cart' -%}
   <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
 
-
-    <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}"><img src="{{ 'menu-icon.png' | asset_url }}">{{ 'general.breadcrumbs.home' | t }}</a>
+    <img src="{{ 'menu-icon.png' | asset_url }}">
+    <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t | upcase}}</a>
 
     {%- if template.name == 'product' -%}
 
@@ -68,8 +68,30 @@
 
     {%- elsif template.name == 'page' -%}
 
-      <span class="breadcrumb__divider" aria-hidden="true">/</span>
-      <span>{{ page.title }}</span>
+      {% for link in linklists.main-menu.links %}
+        {% if link.child_active or link.active %}
+        /
+          <a href="{{ link.url }}">
+          {{ link.title | escape | upcase}}
+          </a>
+          {% for clink in link.links %}
+            {% if clink.child_active or clink.active %}
+            -
+              <a href="{{ clink.url }}">
+              {{ clink.title | escape | upcase}}
+              </a>
+              {% for gclink in clink.links %}
+                {% if gclink.child_active or gclink.active %}
+                  -
+                  <a href="{{ gclink.url }}">
+                  {{ gclink.title | escape | upcase}}
+                  </a>
+                {% endif %}
+              {%- endfor -%}
+            {% endif %}
+          {%- endfor -%}
+        {% endif %}
+      {%- endfor -%}
 
     {%- elsif template.name == 'search' -%}
 
@@ -84,5 +106,5 @@
     {%- endif -%}
   </nav>
 {%- endunless -%}
-
+</div>
 {%- endif -%}
