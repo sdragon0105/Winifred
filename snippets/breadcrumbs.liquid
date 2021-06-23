@@ -1,9 +1,11 @@
 {%- if settings.show_breadcrumbs -%}
-<div class="page-width">
+<div class="page-width" style="padding-top: 40px; padding-bottom: 20px;">
 {%- unless template.name == 'index' or template.name == 'cart' -%}
-  <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+  <nav class="breadcrumb breadcrumb--align" role="navigation" aria-label="breadcrumbs">
 
-    <img src="{{ 'menu-icon.png' | asset_url }}">
+    <div style="padding-right: 10px;">
+      <img src="{{ 'menu-icon.png' | asset_url }}">
+    </div>
     <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t | upcase}}</a>
 
     {%- if template.name == 'product' -%}
@@ -70,19 +72,19 @@
 
       {% for link in linklists.main-menu.links %}
         {% if link.child_active or link.active %}
-        /
+        <span class="breadcrumb__divider" aria-hidden="true"> / </span>
           <a href="{{ link.url }}">
           {{ link.title | escape | upcase}}
           </a>
           {% for clink in link.links %}
             {% if clink.child_active or clink.active %}
-            -
+            <span class="breadcrumb__divider" aria-hidden="true"> - </span>
               <a href="{{ clink.url }}">
               {{ clink.title | escape | upcase}}
               </a>
               {% for gclink in clink.links %}
                 {% if gclink.child_active or gclink.active %}
-                  -
+                <span class="breadcrumb__divider" aria-hidden="true"> - </span>
                   <a href="{{ gclink.url }}">
                   {{ gclink.title | escape | upcase}}
                   </a>
