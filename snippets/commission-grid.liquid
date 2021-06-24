@@ -222,11 +222,19 @@
     color: black;
     padding-top: 100px;
   }
+  .hero__subtitle--font-size {
+      font-size: 0.9em;
+  }
 {%- endstyle -%}
 
 {% if section.settings.textarea != blank %}
     <div class="commission-contents__item">
 
+      {%- unless section.settings.subheading == blank -%}
+        <div class="hero__subtitle hero__subtitle--font-size">
+          {{ section.settings.subheading | escape | upcase }}
+        </div>
+      {%- endunless -%}
       {%- if section.settings.heading != blank -%}
         <div class="rte--block rte--strong" style="font-size: 2em;">
           {{ section.settings.heading }}
