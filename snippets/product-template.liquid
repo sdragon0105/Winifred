@@ -82,7 +82,7 @@
         <div class="grid__item {{ product_description_width }}">
 
           <div class="product-single__meta">
-            
+
             {%- if settings.vendor_enable -%}
               <div class="product-single__vendor">
                 {%- assign vendor_handle = product.vendor | handleize -%}
@@ -317,7 +317,7 @@
               {%- render 'product-additional-content', product: product, section_id: section_id -%}
             {%- endunless -%}
 
-            
+
             <a class="btn-lnk-view-product-details" href="{{ product.url }}">View Full Product Details</a>
 
             {%- if social -%}
@@ -354,3 +354,4 @@
     </div>
   </div>
 </div>
+

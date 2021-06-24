@@ -95,6 +95,31 @@
         {% endif %}
       {%- endfor -%}
 
+      {% for link in linklists.observe-menu.links %}
+        {% if link.child_active or link.active %}
+        <span class="breadcrumb__divider" aria-hidden="true"> / </span>
+          <a href="{{ link.url }}">
+          {{ link.title | escape | upcase}}
+          </a>
+          {% for clink in link.links %}
+            {% if clink.child_active or clink.active %}
+            <span class="breadcrumb__divider" aria-hidden="true"> - </span>
+              <a href="{{ clink.url }}">
+              {{ clink.title | escape | upcase}}
+              </a>
+              {% for gclink in clink.links %}
+                {% if gclink.child_active or gclink.active %}
+                <span class="breadcrumb__divider" aria-hidden="true"> - </span>
+                  <a href="{{ gclink.url }}">
+                  {{ gclink.title | escape | upcase}}
+                  </a>
+                {% endif %}
+              {%- endfor -%}
+            {% endif %}
+          {%- endfor -%}
+        {% endif %}
+      {%- endfor -%}
+
     {%- elsif template.name == 'search' -%}
 
       <span class="breadcrumb__divider" aria-hidden="true">/</span>
