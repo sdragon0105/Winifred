@@ -10,7 +10,7 @@
   data-section-type="collection-template">
   {%- if section.settings.title != blank -%}
     <div class="page-width">
-      <div class="section-header{% if section.settings.view_all %}{% unless settings.type_headers_align_text %} section-header--with-link{% endunless %}{% endif %}">
+      <div class="section-header shop__section-header--align{% if section.settings.view_all %}{% unless settings.type_headers_align_text %} section-header--with-link{% endunless %}{% endif %}">
         <h2 class="section-header__title">
            {{ section.settings.title }}
         </h2>

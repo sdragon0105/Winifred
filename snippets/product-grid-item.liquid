@@ -144,7 +144,7 @@
         {%- endif -%}
 
         <!-- Yotpo Star Rating on Product Pages - Snippets > product-block.liquid-->
-        <div style="text-align: center">  
+        <div style="text-align: center">
           <div class="yotpo bottomLine" style="display:inline-block"
             data-product-id="{{ product.id }}">
           </div>
@@ -201,7 +201,12 @@
         {%- if settings.enable_product_reviews -%}
           <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
         {%- endif -%}
-      </div>   
+        {% if product.contnet != "" %}
+          <div class="shop__product-content">
+            {{ product.content }}
+          </div>
+        {% endif %}
+      </div>
 
     </a>
   </div>
