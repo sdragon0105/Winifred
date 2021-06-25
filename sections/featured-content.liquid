@@ -18,6 +18,14 @@
     left: 0px;
     bottom: 0px;
   }
+  .title-new-mark {
+    height: 119px;
+    width: 90px;
+    background-size: 100% 100%;
+    position: absolute;
+    top: -27px;
+    right: -72px;
+  }
 {% endstyle %}
 
 <div
@@ -30,8 +38,16 @@
     <div class="header-title">
       <div class="grid__item{% if section.settings.narrow_column %} medium-up--three-quarters{% endif %}" style="margin: auto; padding-top: 60px; padding-left: 0;">
         {%- if section.settings.title != blank -%}
-          <h2>{{ section.settings.title }}</h2>
+          <div style="display: inline-block; position: relative;">
+            <h2>{{ section.settings.title }}</h2>
+            {% if section.settings.title-new_mark == true %}
+              <div class="title-new-mark">
+                <img src="{{ 'title-new-mark.png' | asset_url }}">
+              </div>
+            {% endif %}
+          </div>
         {%- endif -%}
+
 
         {%- if section.settings.text != blank -%}
 
@@ -96,6 +112,12 @@
         "type": "text",
         "id": "title",
         "label": "Heading"
+      },
+      {
+        "type": "checkbox",
+        "id": "title-new_mark",
+        "label": "Show Title 'NEW' mark",
+        "default": false
       },
       {
         "type": "richtext",

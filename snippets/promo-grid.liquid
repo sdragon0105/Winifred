@@ -184,12 +184,12 @@
               <div class="promo-grid__text">
                 {%- if block.settings.subheading != blank -%}
                   <div class="rte--block rte--em">
-                    {{ block.settings.subheading }}
+                    <p>{{ block.settings.subheading }}</p>
                   </div>
                 {%- endif -%}
                 {%- if block.settings.heading != blank -%}
                 <a href="{{ block.settings.url_link }}">
-                  <div class="rte--block rte--strong" style="font-family: Chiswick Sans;">
+                  <div class="rte--block rte--strong" style="font-family: 'ChiswickSans-Light';">
                     {{ block.settings.heading }}
                   </div>
                 </a>
@@ -223,7 +223,7 @@
     <div class="feature-text__item">
 
       <div class="rte--block" style="width: 70%;">
-        {{ section.settings.textarea | newline_to_br }}
+        <p>{{ section.settings.textarea | newline_to_br }}</p>
       </div>
 
       {%- if section.settings.cta_text1 != blank -%}
