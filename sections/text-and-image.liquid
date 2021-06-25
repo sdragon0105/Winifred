@@ -15,39 +15,41 @@
 
   <div class="page-width page-width--background-color page-with--position">
     {%- capture image_layout -%}
-        <div class="feature-row__item feature-row__item--display">
-          {%- for block in section.blocks -%}
-            <div style="margin: 0 auto; max-width: {{ section.settings.image_width }}px;">
-              {%- if block.settings.image != blank -%}
-                {%- if section.settings.button_label != blank and section.settings.button_link != blank %}<a href="{{ section.settings.button_link }}">{% endif -%}
-                <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;">
-                  {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                  <img class="feature-row__image lazyload"
-                      data-src="{{ img_url }}"
-                      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                      data-aspectratio="{{ block.settings.image.aspect_ratio }}"
-                      data-sizes="auto"
-                      alt="{{ block.image.alt }}">
-                </div>
-                {%- if section.settings.button_label != blank and section.settings.button_link != blank %}</a>{% endif -%}
 
-              {%- else -%}
-                <div class="image-wrap">
-                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-                </div>
-              {%- endif -%}
-            </div>
-          {%- endfor -%}
+      {%- for block in section.blocks -%}
+        <div class="image__item one-fifth">
+          <div style="margin: 0 auto; max-width: {{ section.settings.image_width }}px; {% if forloop.index == 1 %}padding-top: 80px;{%endif%}">
+            {%- if block.settings.image != blank -%}
+              {%- if section.settings.button_label != blank and section.settings.button_link != blank %}<a href="{{ section.settings.button_link }}">{% endif -%}
+              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;">
+                {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img class="feature-row__image lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                    data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ block.image.alt }}">
+              </div>
+              {%- if section.settings.button_label != blank and section.settings.button_link != blank %}</a>{% endif -%}
+
+            {%- else -%}
+              <div class="image-wrap">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- endif -%}
+          </div>
         </div>
+      {%- endfor -%}
+
     {%- endcapture -%}
 
     <div class="feature-content">
-      <div class="feature-row" data-aos>
+      <div class="feature-row feature-row--margin" data-aos>
         {%- if section.settings.layout == 'left' -%}
           {{ image_layout }}
         {%- endif -%}
 
-        <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }} feature-row__text--align">
+        <div class="feature-row__item three-fifth feature-row__text feature-row__text--align">
           <div class="feature-img">
             {% if section.settings.mark_image != blank %}
               {%- assign img_url = section.settings.mark_image | img_url -%}

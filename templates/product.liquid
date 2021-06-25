@@ -1,9 +1,13 @@
 {% section 'product-template' %}
+{% section 'product-recommendations' %}
+
+{%comment%}
 {% section 'product-story-sections' %}
 {% section 'product-recommendations' %}
 {% section 'instafeed' %}
 {% section 'yotpo-reviews-widget' %}
 {% section 'recently-viewed' %}
+{%endcomment%}
 
 {% if collection %}
   <div class="text-center page-content page-content--bottom">
@@ -15,7 +19,7 @@
 
 <!-- Custom Code Snippet -->
 <!-- <script>theme.productData[{{ product.id }}] = {{ product | json }};</script> -->
-  
+
 <!-- DRIP_PRODUCT_TRACKING_V1 -->
 <!-- <script text="text/javascript">
   var _dcq = _dcq || [];
