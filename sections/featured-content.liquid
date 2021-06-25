@@ -10,6 +10,14 @@
     top: -375px;
     right: -490px;
   }
+  .image-background {
+    background-color: {{ section.settings.color_bg }};
+    width: 100%;
+    height: {{ section.settings.background-color_height }}px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
 {% endstyle %}
 
 <div
@@ -18,24 +26,23 @@
   class="text-{{ section.settings.align_text }} div--position"
   style="z-index: 1; overflow: hidden;">
 
-  <div class="header-title">
-    <div class="grid__item{% if section.settings.narrow_column %} medium-up--three-quarters{% endif %}" style="margin: auto;">
-      {%- if section.settings.title != blank -%}
-        <h2>{{ section.settings.title }}</h2>
-      {%- endif -%}
+  <div class="page-width" style="position: relative; z-index: 1;">
+    <div class="header-title">
+      <div class="grid__item{% if section.settings.narrow_column %} medium-up--three-quarters{% endif %}" style="margin: auto; padding-top: 60px; padding-left: 0;">
+        {%- if section.settings.title != blank -%}
+          <h2>{{ section.settings.title }}</h2>
+        {%- endif -%}
 
-      {%- if section.settings.text != blank -%}
-        <div class="grid__item">
-          {%- if section.settings.enlarge_text -%}<div class="enlarge-text enlarge-text--style ">{%- endif -%}
-            {{ section.settings.text }}
-          {%- if section.settings.enlarge_text -%}</div>{%- endif -%}
-        </div>
-      {%- endif -%}
+        {%- if section.settings.text != blank -%}
+
+            {%- if section.settings.enlarge_text -%}<div class="enlarge-text enlarge-text--style ">{%- endif -%}
+              {{ section.settings.text }}
+            {%- if section.settings.enlarge_text -%}</div>{%- endif -%}
+
+        {%- endif -%}
+      </div>
     </div>
-  </div>
 
-
-  <div class="page-width">
     {% for block in section.blocks %}
       <div class="feature-row__item">
         {% if block.settings.image != blank %}
@@ -70,6 +77,10 @@
     {% endfor %}
   </div>
 
+  {% if section.settings.background_color == true %}
+    <div class="image-background"></div>
+  {% endif %}
+
   {% if section.settings.background_mark == true %}
     <div class="background-image"></div>
   {% endif %}
@@ -80,7 +91,6 @@
 {% schema %}
   {
     "name": "Rich text",
-    "class": "index-section",
     "settings": [
       {
         "type": "text",
@@ -131,6 +141,32 @@
         "id": "background_mark",
         "label": "Show background mark",
         "default": false
+      },
+      {
+        "type": "header",
+        "content": "Design"
+      },
+      {
+        "type": "checkbox",
+        "id": "background_color",
+        "label": "Show Background Color",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "background-color_height",
+        "label": "Background color Height",
+        "default": 500,
+        "min": 100,
+        "max": 1000,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background Color",
+        "default": "rgba(0,0,0,0)"
       }
     ],
     "presets": [{

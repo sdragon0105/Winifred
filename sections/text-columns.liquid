@@ -1,6 +1,6 @@
 {%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
 
-<div class="page-width">
+<div class="page-width section-padding" {% if section.settings.background_color == true%}style="background-color: #FAF4F1;"{% endif %} >
   {%- if section.settings.title != blank -%}
     <div class="section-header text-{{ section.settings.align_text }}">
       <h2>{{ section.settings.title }}</h2>
@@ -79,7 +79,6 @@
 {% schema %}
   {
     "name": "Text columns with images",
-    "class": "index-section",
     "settings": [
       {
         "type": "text",
@@ -118,6 +117,12 @@
         "type": "url",
         "id": "button_link",
         "label": "Link"
+      },
+      {
+        "type": "checkbox",
+        "id": "background_color",
+        "label": "Show Background Color",
+        "default": false
       }
     ],
     "blocks": [

@@ -1,6 +1,6 @@
 {%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
 
-<div class="page-width">
+<div class="page-width home-page-last-section--position">
   {%- capture image_layout -%}
     <div class="feature-row__item">
       <div style="margin: 0 auto; max-width: {{ section.settings.image_width }}px;">
@@ -58,7 +58,6 @@
 {% schema %}
   {
     "name": "Image with text",
-    "class": "index-section",
     "settings": [
       {
         "type": "image_picker",
