@@ -4,7 +4,7 @@
 
   <div class="page-width">
 
-    {%- render 'promo-grid', section: section -%}
+    {%- render 'masterclass-grid', section: section -%}
 
     {%- if section.blocks.size == 0 -%}
       <div class="page-width text-center">
@@ -20,8 +20,9 @@
 
 {% schema %}
   {
-    "name": "Promotion grid",
-    "max_blocks": 15,
+    "name": "Masterclass grid",
+    "class": "index-section--margin",
+    "max_blocks": 3,
     "settings": [
 
       {

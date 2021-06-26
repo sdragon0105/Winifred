@@ -69,6 +69,17 @@
             class="grid__image-ratio grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
             data-bgset="{% render 'bgset', image: preview_image %}"
             data-sizes="auto">
+
+            {% unless sold_out %}
+              {% assign date_created = product.created_at | date:'%s' %}
+              {% assign     date_now = 'now' | date:'%s' %}
+              {% assign   difference = date_now | minus: date_created %}
+
+              {% if difference < 2592000 %}
+                <span class="badge-new">NEW</span>
+              {% endif %}
+            {% endunless %}
+
           </div>
         {%- else -%}
           <div class="image-wrap"
@@ -201,11 +212,13 @@
         {%- if settings.enable_product_reviews -%}
           <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
         {%- endif -%}
+        {% comment %}
         {% if product.contnet != "" %}
           <div class="shop__product-content">
             {{ product.content }}
           </div>
         {% endif %}
+        {% endcomment %}
       </div>
 
     </a>

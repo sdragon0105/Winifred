@@ -1,6 +1,16 @@
 {%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
-
-<div class="page-width">
+{% style %}
+  .background-image {
+    background-image: url({{'Path108.png' | asset_url }});
+    height: 1000px;
+    width: 1000px;
+    background-size: 100% 100%;
+    position: absolute;
+    left: -600px;
+    bottom: -630px;
+  }
+{% endstyle %}
+<div class="page-width" style="position: relative; ">
   {%- capture image_layout -%}
     <div class="feature-row__item">
       <div style="margin: 0 auto; max-width: {{ section.settings.image_width }}px;">
@@ -52,6 +62,9 @@
       {{ image_layout }}
     {%- endif -%}
   </div>
+
+  <div class="background-image"></div>
+
 </div>
 
 {%- if section.settings.divider -%}</div>{%- endif -%}
