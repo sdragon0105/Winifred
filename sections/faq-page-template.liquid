@@ -22,16 +22,33 @@
 {%- endif -%}
 
 {%- if section.blocks.size > 0 -%}
-  <div class="page-width page-content">
-    <div class="grid">
-      <div class="grid__item medium-up--three-quarters medium-up--push-one-eighth">
+  <div class="page-width page-content" style="padding: 0 150px; height: 700px;">
+    <div class="grid" style="display: flex; flex-direction: row;">
+      <div class="grid-item medium-up--one-quarter">
+        <div class="page-blocks page-blocks--flush" itemscope itemtype="https://schema.org/FAQPage">
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }}>
+              {%- if block.type ==  'rich-text' -%}
+                {%comment%}
+                  {%- render 'page-block-rich-text', section_class: 'index-section--faq', block: block -%}
+                {%endcomment%}
+
+                    <span class="faq-title">{{ block.settings.title }}</span>
+
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="grid__item medium-up--three-quarters ">
 
         <div class="page-blocks page-blocks--flush" itemscope itemtype="https://schema.org/FAQPage">
           {%- for block in section.blocks -%}
             <div {{ block.shopify_attributes }}>
               {%- case block.type -%}
                 {%- when 'rich-text'-%}
-                  {%- render 'page-block-rich-text', section_class: 'index-section--faq', block: block -%}
+                  {%- render 'page-block-rich-text', section_class: '', block: block -%}
 
                 {%- when 'question'-%}
                   {%- render 'page-block-faq', block: block -%}
@@ -98,19 +115,13 @@
     "blocks": [
       {
         "type": "rich-text",
-        "name": "Rich text",
+        "name": "Title",
         "settings": [
           {
             "type": "text",
             "id": "title",
             "label": "Title",
             "default": "Rich text"
-          },
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Text",
-            "default": "<p>Use this section for any descriptive text you need to fill out your pages or to add introductory headings between other blocks.</p>"
           },
           {
             "type": "select",

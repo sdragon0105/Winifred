@@ -1,11 +1,11 @@
-<div class="index-section {{ section_class }}">
+<div class=" {{ section_class }}">
   <div class="page-width text-{{ block.settings.align_text }}">
     <div class="grid">
       <div class="grid__item{% if block.settings.narrow_column %} medium-up--three-quarters medium-up--push-one-eighth{% endif %}">
         {%- if block.settings.title != blank -%}
-          <p class="h2">
+          <span class="fag-title--large">
             {{ block.settings.title | escape }}
-          </p>
+          </span>
         {%- endif -%}
         {%- if block.settings.text != blank -%}
           <div class="rte">

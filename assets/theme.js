@@ -6799,3 +6799,25 @@ jQuery(document).ready(function(){
   });
 });
 /* 2633 - Top Nav Redesign/IA Restructure - By: Hafiz Adnan Hussain - END */
+
+tabs = document.querySelectorAll('.tab');
+tabcontents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(function (tab) {
+  tab.addEventListener('click', function () {
+
+    contentId = this.dataset.contentId;
+    content = document.getElementById(contentId);
+
+    tabcontents.forEach(function (content) {
+      content.classList.remove('active');
+    });
+
+    tabs.forEach(function (tab) {
+      tab.classList.remove('active');
+    });
+
+    this.classList.add('active');
+    content.classList.add('active');
+  });
+});

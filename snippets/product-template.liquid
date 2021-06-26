@@ -311,7 +311,17 @@
 
             {%- unless description_style == 'full' -%}
               <div class="product-single__description rte">
-                {{ product.description }}
+
+                <ul class="tabs">
+                  <li class="tab active" data-content-id="tab-content-1">Product Details</li>
+                  <li class="tab" data-content-id="tab-content-2">Washcare</li>
+                  <li class="tab" data-content-id="tab-content-3">Product Measurement</li>
+                </ul>
+
+                <div id="tab-content-1" class="tab-content active">{{ product.description }}</div>
+                <div id="tab-content-2" class="tab-content">{{ section.settings.product_washcare }}</div>
+                <div id="tab-content-3" class="tab-content">{{ section.settings.product_measurement }}</div>
+
               </div>
 
               {%- render 'product-additional-content', product: product, section_id: section_id -%}
@@ -346,7 +356,17 @@
 
       {%- if description_style == 'full' -%}
         <div class="product-single__description-full rte">
-          {{ product.description }}
+
+          <ul class="tabs">
+            <li class="tab" data-content-id="tab-content-1">Product Details</li>
+            <li class="tab" data-content-id="tab-content-2">Washcare</li>
+            <li class="tab" data-content-id="tab-content-3">Product Measurement</li>
+          </ul>
+
+          <div id="tab-content-1" class="tab-content">{{ product.description }}</div>
+          <div id="tab-content-2" class="tab-content">{{ section.settings.product_washcare }}</div>
+          <div id="tab-content-3" class="tab-content">{{ section.settings.product_measurement }}</div>
+
         </div>
         {%- render 'product-additional-content', product: product, section_id: section_id -%}
       {%- endif -%}
