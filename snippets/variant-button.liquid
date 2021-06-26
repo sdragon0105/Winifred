@@ -55,7 +55,8 @@
         {%- else -%}
           <label
             for="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
-            class="variant__button-label{% unless product_available %} disabled{% endunless %}">{{ value | escape }}</label>
+            class="variant__button-label{% unless product_available %} disabled{% endunless %}
+              {% if settings.product_size_swatches %} button-circle_style{% endif %}">{{ value | escape }}</label>
         {%- endif -%}
       </div>
     {%- endfor -%}

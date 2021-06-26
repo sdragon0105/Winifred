@@ -210,7 +210,7 @@
 
     </a>
   </div>
-
+{% comment %}
   {%- if settings.collection_color_swatches -%}
     {%- liquid
       assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
@@ -268,4 +268,5 @@
       {%- endif -%}
     {%- endfor -%}
   {%- endif -%}
+{% endcomment %}
 </div>
