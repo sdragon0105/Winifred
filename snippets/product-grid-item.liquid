@@ -65,6 +65,7 @@
           </div>
         {%- endif -%}
         {%- if fixed_aspect_ratio -%}
+        {%comment%}
           <div
             class="grid__image-ratio grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
             data-bgset="{% render 'bgset', image: preview_image %}"
@@ -79,9 +80,9 @@
                 <span class="badge-new">NEW</span>
               {% endif %}
             {% endunless %}
-
           </div>
         {%- else -%}
+        {% endcomment %}
           <div class="image-wrap"
             style="height: 0; padding-bottom: {{ 100 | divided_by: preview_image.aspect_ratio }}%;"
             >
@@ -96,6 +97,16 @@
                 src="{{ preview_image | img_url: '400x' }}"
                 alt="{{ preview_image.alt | escape }}">
             </noscript>
+
+            {% unless sold_out %}
+              {% assign date_created = product.created_at | date:'%s' %}
+              {% assign     date_now = 'now' | date:'%s' %}
+              {% assign   difference = date_now | minus: date_created %}
+
+              {% if difference < 2592000 %}
+                <span class="badge-new">NEW</span>
+              {% endif %}
+            {% endunless %}
           </div>
         {%- endif -%}
 
@@ -108,6 +119,16 @@
               class="grid-product__secondary-image small--hide lazyload"
               data-bgset="{% render 'bgset', image: second_image %}"
               data-sizes="auto">
+
+              {% unless sold_out %}
+                {% assign date_created = product.created_at | date:'%s' %}
+                {% assign     date_now = 'now' | date:'%s' %}
+                {% assign   difference = date_now | minus: date_created %}
+
+                {% if difference < 2592000 %}
+                  <span class="badge-new">NEW</span>
+                {% endif %}
+              {% endunless %}
             </div>
           {%- endif -%}
         {%- endunless -%}

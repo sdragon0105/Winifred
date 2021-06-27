@@ -36,7 +36,7 @@
 
   <div class="page-width" style="position: relative; z-index: 1;">
     <div class="header-title">
-      <div class="grid__item{% if section.settings.narrow_column %} medium-up--three-quarters{% endif %}" style="margin: auto; padding-top: 60px; padding-left: 0;">
+      <div class="grid__item{% if section.settings.narrow_column %} medium-up--three-quarters{% endif %}" style="margin: auto; padding-top: 60px; padding-left: 0; max-width: 1000px;">
         {%- if section.settings.title != blank -%}
           <div style="display: inline-block; position: relative;">
             <h2>{{ section.settings.title }}</h2>
@@ -47,7 +47,6 @@
             {% endif %}
           </div>
         {%- endif -%}
-
 
         {%- if section.settings.text != blank -%}
 

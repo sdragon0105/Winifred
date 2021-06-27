@@ -25,12 +25,12 @@
     </div>
   {%- endcapture -%}
 
-  <div class="feature-row" data-aos>
+  <div class="feature-row" data-aos style="margin: 0;">
     {%- if section.settings.layout == 'left' -%}
       {{ image_layout }}
     {%- endif -%}
 
-    <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}">
+    <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}" style="max-width: 540px;">
       {%- if section.settings.subtitle != blank -%}
         <p class="h5">{{ section.settings.subtitle }}</p>
       {%- endif -%}
