@@ -1,14 +1,18 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="promo-grid">
+
 {%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
 
   {% style%}
-    .contents-width {
+    .contents-max-width {
       max-width: {{ section.settings.contents_width }}px;
       margin: auto;
     }
   {% endstyle %}
 
 <div class="page-width section-padding" {% if section.settings.background_color == true%}style="background-color: #FAF4F1;"{% endif %} >
-  <div class="contents-width">
+  <div class="contents-max-width">
     {%- if section.settings.title != blank -%}
       <div class="section-header text-{{ section.settings.align_text }}">
         <h2>{{ section.settings.title }}</h2>
@@ -84,10 +88,10 @@
 </div>
 
 {%- if section.settings.divider -%}</div>{%- endif -%}
-
+</div>
 {% schema %}
   {
-    "name": "Text columns with images",
+    "name": "Four - image columns",
     "settings": [
       {
         "type": "text",
@@ -202,7 +206,7 @@
     ],
     "presets": [
       {
-        "name": "Text columns with images",
+        "name": "Four - image columns",
         "category": "Text",
         "blocks": [
           {

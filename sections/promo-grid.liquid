@@ -2,7 +2,7 @@
   data-section-id="{{ section.id }}"
   data-section-type="promo-grid">
   {%- unless section.settings.full_width -%}
-    <div class="page-width">
+    <div class="page-width" style="padding: 0;">
   {%- endunless -%}
 
   {%- render 'promo-grid', section: section -%}

@@ -1,8 +1,8 @@
-{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
 <div
-  id="CollectionSection-{{ section.id }}"
   data-section-id="{{ section.id }}"
-  data-section-type="text-template">
+  data-section-type="promo-grid">
+
+{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
 
   {% style%}
     .contents-width {
@@ -86,9 +86,9 @@
     {% endif %}
   </div>
 </div>
-</div>
-{%- if section.settings.divider -%}</div>{%- endif -%}
 
+{%- if section.settings.divider -%}</div>{%- endif -%}
+</div>
 {% schema %}
   {
     "name": "Three - image columns",
