@@ -4,19 +4,19 @@
   <div class="" style="width: 70%; margin: auto; padding-bottom: 50px;">
     {%- if section.settings.title != blank -%}
       <div class="section-header text-{{ section.settings.align_text }}">
-        <h2>{{ section.settings.title }}</h2>
+        <h2 class="header-font">{{ section.settings.title }}</h2>
       </div>
     {%- endif -%}
 
     {% if section.settings.text != blank %}
-      <div class="rte-setting text-{{ section.settings.align_text }}">
+      <div class="rte-setting text-{{ section.settings.align_text }} content-font">
         {{ section.settings.text }}
       </div>
     {% endif %}
 
     {% if section.settings.button_label != blank %}
       <div class="button-item">
-        <a href="{{ section.settings.button_link }}" class="btn btn--secondary btn--large">
+        <a href="{{ section.settings.button_link }}" class="btn btn--large button-font" style="color: white;">
           {{ section.settings.button_label }}
         </a>
       </div>

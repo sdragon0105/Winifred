@@ -28,7 +28,7 @@
       class="site-nav__item site-nav__expanded-item{% if has_dropdown %} site-nav--has-dropdown{% endif %}{% if is_megamenu %} site-nav--is-megamenu{% endif %}"
       {% if has_dropdown %}aria-haspopup="true"{% endif %}>
 
-      <a href="{{ link.url }}" class="site-nav__link site-nav__link--underline{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}" style="color: #E5925C;">
+      <a href="{{ link.url }}" class="site-nav__link site-nav__link--underline main-menu-font{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}" style="color: #E5925C;">
         {{ link.title }}
       </a>
       {%- if is_megamenu -%}
