@@ -8,7 +8,7 @@
     background-size: 100% 100%;
     position: absolute;
     top: -300px;
-    right: -490px;
+    right: -470px;
   }
   .image-background {
     background-color: {{ section.settings.color_bg }};
@@ -23,8 +23,8 @@
     width: 90px;
     background-size: 100% 100%;
     position: absolute;
-    top: -27px;
-    right: -72px;
+    top: -32px;
+    right: -60px;
   }
 {% endstyle %}
 
@@ -32,14 +32,14 @@
   data-section-id="{{ section.id }}"
   data-section-type="featured-content-section"
   class="text-{{ section.settings.align_text }} div--position"
-  style="z-index: 1; overflow: hidden;">
+  style="z-index: 1;">
 
-  <div class="page-width" style="position: relative; z-index: 1;">
+  <div class="page-width" style="position: relative; z-index: 1; overflow: hidden;">
     <div class="header-title">
-      <div class="grid__item{% if section.settings.narrow_column %} medium-up--three-quarters{% endif %}" style="margin: auto; padding-top: 60px; padding-left: 0; max-width: 1000px;">
+      <div class="grid__item{% if section.settings.narrow_column %} medium-up--three-quarters{% endif %}" style="margin: auto; padding-top: 60px; padding-left: 0; max-width: 1010px;">
         {%- if section.settings.title != blank -%}
           <div style="display: inline-block; position: relative;">
-            <h2>{{ section.settings.title }}</h2>
+            <h2 class="header-font">{{ section.settings.title }}</h2>
             {% if section.settings.title-new_mark == true %}
               <div class="title-new-mark">
                 <img src="{{ 'title-new-mark.png' | asset_url }}">
@@ -50,12 +50,16 @@
 
         {%- if section.settings.text != blank -%}
 
-            {%- if section.settings.enlarge_text -%}<div class="enlarge-text enlarge-text--style ">{%- endif -%}
+            <div class="content-font {% if section.settings.enlarge_text %} enlarge-text enlarge-text--style{% endif %}">
               {{ section.settings.text }}
-            {%- if section.settings.enlarge_text -%}</div>{%- endif -%}
+            </div>
 
         {%- endif -%}
       </div>
+
+      {% if section.settings.background_mark == true %}
+        <div class="background-image"></div>
+      {% endif %}
     </div>
 
     {% for block in section.blocks %}
@@ -84,7 +88,7 @@
         {% endif %}
 
         {% if block.settings.text != blank %}
-          <div class="grid__item--align">
+          <div class="grid__item--align content-font">
             {{ block.settings.text }}
           </div>
         {% endif %}
@@ -96,9 +100,6 @@
     <div class="image-background"></div>
   {% endif %}
 
-  {% if section.settings.background_mark == true %}
-    <div class="background-image"></div>
-  {% endif %}
 </div>
 
 {%- if section.settings.divider -%}</div>{%- endif -%}

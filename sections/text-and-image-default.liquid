@@ -32,13 +32,13 @@
 
     <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}" style="max-width: 540px;">
       {%- if section.settings.subtitle != blank -%}
-        <p class="h5">{{ section.settings.subtitle }}</p>
+        <p class="h5 subheader-font">{{ section.settings.subtitle }}</p>
       {%- endif -%}
       {%- if section.settings.title != blank -%}
-        <p class="h2" style="text-align: center;">{{ section.settings.title | escape }}</p>
+        <p class="h2 header-font" style="text-align: center;">{{ section.settings.title | escape }}</p>
       {%- endif -%}
       {%- if section.settings.text != blank -%}
-        <div class="rte featured-row__subtext">{{ section.settings.text }}</div>
+        <div class="rte featured-row__subtext content-font">{{ section.settings.text }}</div>
       {%- endif -%}
       {%- if section.settings.button_label != blank -%}
         <a href="{{ section.settings.button_link }}" class="btn">

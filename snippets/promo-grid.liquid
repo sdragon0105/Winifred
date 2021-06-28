@@ -183,15 +183,15 @@
             <div class="promo-grid__content{% if block.settings.boxed %} promo-grid__content--boxed{% endif %}{% if block.settings.framed %} promo-grid__content--framed{% endif %}">
               <div class="promo-grid__text">
                 {%- if block.settings.subheading != blank -%}
-                  <div class="rte--block rte--em">
+                  <div class="rte--block rte--em subheader-font">
                     <p>{{ block.settings.subheading }}</p>
                   </div>
                 {%- endif -%}
                 {%- if block.settings.heading != blank -%}
                 <a href="{{ block.settings.url_link }}">
-                  <div class="rte--block rte--strong" style="font-family: 'ChiswickSans-Light';">
+                  <p class="header-font">
                     {{ block.settings.heading }}
-                  </div>
+                  </p>
                 </a>
                 {%- endif -%}
                 {% comment %}
@@ -222,17 +222,17 @@
   {% if section.settings.textarea != blank %}
     <div class="feature-text__item">
 
-      <div class="rte--block" style="max-width: 1070px;">
+      <div class="rte--block content-font" style="max-width: 1070px;">
         <p>{{ section.settings.textarea | newline_to_br }}</p>
       </div>
 
       {%- if section.settings.cta_text1 != blank -%}
-        <a href="{{ section.settings.cta_link1 }}" class="btn" style="background: {{ section.settings.color_bg }}; color: {{ section.settings.color_ft }}; font-size: 11px">
+        <a href="{{ section.settings.cta_link1 }}" class="btn button-font" style="background: {{ section.settings.color_bg }}; color: {{ section.settings.color_ft }}; padding: 25px 60px;">
           {{ section.settings.cta_text1 }}
         </a>
       {%- endif -%}
       {%- if section.settings.cta_text2 != blank -%}
-        <a href="{{ section.settings.cta_link2 }}" class="btn{% unless accent_exists %}{% unless section.settings.boxed %} btn--inverse{% endunless %}{% endunless %}">
+        <a href="{{ section.settings.cta_link2 }}" class="btn button-font{% unless accent_exists %}{% unless section.settings.boxed %} btn--inverse{% endunless %}{% endunless %}">
           {{ section.settings.cta_text2 }}
         </a>
       {%- endif -%}

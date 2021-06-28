@@ -1,4 +1,26 @@
 {%- style -%}
+
+@font-face {
+  font-family: "ChiswickSans-Light";
+  src: url('{{ "ChiswickSans-Light.woff2" | asset_url }}') format("woff2");
+}
+
+@font-face {
+  font-family: "ChiswickSans-LightItalic";
+  src: url('{{ "ChiswickSans-LightItalic.woff2" | asset_url }}') format("woff2");
+}
+
+@font-face {
+  font-family: "Graphik-Regular";
+  src: url('{{ "Graphik-Regular.woff2" | asset_url }}') format("woff2");
+}
+
+@font-face {
+  font-family: "Graphik-Wide-Medium";
+  src: url('{{ "Graphik-Wide-Medium.woff2" | asset_url }}') format("woff2");
+}
+
+
   :root {
     --typeHeaderPrimary: {{ settings.type_header_font_family.family }};
     --typeHeaderFallback: {{ settings.type_header_font_family.fallback_families }};
